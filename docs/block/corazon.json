@@ -1,0 +1,63 @@
+{
+  "frames": {
+    "tile_0044.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 14,
+        "h": 12
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 3,
+        "w": 14,
+        "h": 12
+      },
+      "sourceSize": {
+        "w": 18,
+        "h": 18
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "tile_0046.png": {
+      "frame": {
+        "x": 20,
+        "y": 2,
+        "w": 14,
+        "h": 12
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 3,
+        "w": 14,
+        "h": 12
+      },
+      "sourceSize": {
+        "w": 18,
+        "h": 18
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "corazon.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 36,
+      "h": 16
+    },
+    "scale": 1
+  }
+}
