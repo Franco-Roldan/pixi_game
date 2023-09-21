@@ -1,19 +1,14 @@
-import { Application, Sprite } from 'pixi.js'
 
-const app = new Application({
-	view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
-	resolution: window.devicePixelRatio || 1,
-	autoDensity: true,
-	backgroundColor: 0x6495ed,
-	width: 640,
-	height: 480
-});
+import { Manager } from './game/Manager';
+import { KeyBoard } from './game/Keyboard';
+import { LoaderScene } from './Scenes/Loader';
 
-const clampy: Sprite = Sprite.from("clampy.png");
 
-clampy.anchor.set(0.5);
+export const screen_app = {width: 1280, height: 720};
 
-clampy.x = app.screen.width / 2;
-clampy.y = app.screen.height / 2;
+Manager.app_init(screen_app.width, screen_app.height, 0x212F3C);
+KeyBoard.initialize();
 
-app.stage.addChild(clampy);
+// We no longer need to tell the scene the size because we can ask Manager!
+const loady: LoaderScene = new LoaderScene();
+Manager.changeScene(loady);

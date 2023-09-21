@@ -1,0 +1,111 @@
+{
+  "frames": {
+    "trap2.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 31,
+        "h": 46
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 31,
+        "h": 46
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 48
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "trap1.png": {
+      "frame": {
+        "x": 2,
+        "y": 52,
+        "w": 31,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 3,
+        "w": 31,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 48
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "trap0.png": {
+      "frame": {
+        "x": 37,
+        "y": 2,
+        "w": 29,
+        "h": 43
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 5,
+        "w": 29,
+        "h": 43
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 48
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "trap3.png": {
+      "frame": {
+        "x": 70,
+        "y": 2,
+        "w": 24,
+        "h": 41
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 7,
+        "w": 24,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 48
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "trapAnimated.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 96,
+      "h": 99
+    },
+    "scale": 1
+  }
+}
