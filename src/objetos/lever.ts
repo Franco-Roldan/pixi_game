@@ -1,5 +1,6 @@
 import { Container, Graphics, Rectangle, Sprite} from "pixi.js";
 import { IHitbox } from "../IU/IHitbox";
+import { sound } from "@pixi/sound";
 
 
 export class Lever extends Container implements IHitbox{
@@ -17,12 +18,11 @@ export class Lever extends Container implements IHitbox{
         this.lever_base = Sprite.from('3 Objects/2 Decoration/5.png');
         this.lever_top = Sprite.from('3 Objects/2 Decoration/6.png');
 
-
         this.lever_base.scale.set(3);
         this.lever_top.scale.set(3);
 
         this.hitbox = new Graphics();
-        this.hitbox.beginFill(0x23ffFF, 0.2);
+        this.hitbox.beginFill(0x23ffFF, 0.0001);
         this.hitbox.drawRect(0, 0, this.lever_base.width, this.lever_base.height);
         this.hitbox.endFill();
 
@@ -33,6 +33,7 @@ export class Lever extends Container implements IHitbox{
     }
 
     public heldDown(){
+        sound.play('click', {volume: 0.3});
         this.lever_base.scale.y =2;
         this.lever_base.position.y = +5;
         this.lever_top.position.y = +5;

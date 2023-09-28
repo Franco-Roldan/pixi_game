@@ -4,6 +4,7 @@ import { IHitbox } from "../IU/IHitbox";
 import { StateAnimation } from "../game/StateAnimation";
 import { Manager } from "../game/Manager";
 import { Board } from "./board";
+import { sound } from "@pixi/sound";
 
 
 export class Card extends Container implements IHitbox{
@@ -37,11 +38,14 @@ export class Card extends Container implements IHitbox{
         return this.hitbox.getBounds();  
     }
     public getMoney(){
+        sound.play('money_sound', {volume:0.1});
         Manager.score += 100;
         this.flag_control = false
     }
     public getCard(){
         Board.card++;
         this.flag_control = false
+        sound.play('card_sound', {volume:0.2});
+
     }
 }

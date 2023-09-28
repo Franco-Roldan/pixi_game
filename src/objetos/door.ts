@@ -2,6 +2,7 @@ import { Container, Graphics, Rectangle} from "pixi.js";
 import { IHitbox } from "../IU/IHitbox";
 import { StateAnimation } from "../game/StateAnimation";
 import { IScene } from "../IU/IScene";
+import { sound } from "@pixi/sound";
 
 
 export class Door extends Container implements IHitbox, IScene{
@@ -45,6 +46,7 @@ export class Door extends Container implements IHitbox, IScene{
     public OpenDoor(){
         this.door.playState('open');
         this.door2.playState('open');
+        sound.play('opendoor_sound', {volume:0.5});
         this.flag_door = true;
     }
     

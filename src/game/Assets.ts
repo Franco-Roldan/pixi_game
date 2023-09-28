@@ -29,6 +29,13 @@ export const assets: ResolverManifest = {
             }   
             
         },
+        { 
+            name: 'enemies',
+            assets: {
+                enemy_1: './enemies/enemy2.json'
+            }   
+            
+        },
         {
             name : 'power_station_assets',
             assets: {
@@ -49,6 +56,19 @@ export const assets: ResolverManifest = {
                 arrow_right: './IU/arrowRight.png',
                 home: './IU/home.png',
                 return: './IU/return.png',  
+            }
+        },
+        {
+            name: 'sound',
+            assets: {
+                sound_bg : './sound/music_bg.mp3',
+                jump_sound: './sound/30_Jump_03.mp3',
+                death_sound: './sound/1.mp3',
+                trap_sound: './sound/ElectricTrap.mp3',
+                money_sound: './sound/money_save.mp3',
+                card_sound: './sound/card_sound.mp3',
+                opendoor_sound : './sound/OpenDoor.mp3',
+                click: './sound/click.mp3',
             }
         }
 

@@ -45,7 +45,7 @@ export class ResultTable extends Container{
 
         UI_win.addChild(Return_button);
         UI_win.addChild(home_button);
-
+    
         home_button.on('mouseup', () => {Manager.changeScene(new MenuScene())});
         Return_button.on('mouseup', () => {Manager.changeScene( new World_game())});
 

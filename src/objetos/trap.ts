@@ -3,6 +3,8 @@ import { StateAnimation } from "../game/StateAnimation";
 import { IScene } from "../IU/IScene";
 import { IHitbox } from "../IU/IHitbox";
 import { PhysicsContainer } from "../game/PhysicsContainer";
+import { sound } from "@pixi/sound";
+
 
 export class Trap extends Container implements IScene, IHitbox{
     
@@ -31,7 +33,7 @@ export class Trap extends Container implements IScene, IHitbox{
 
 
         this.hitbox = new Graphics();
-        this.hitbox.beginFill(0x000000, 0.2);
+        this.hitbox.beginFill(0x000000, 0.0001);
         this.hitbox.drawRect(0,5,this.texture_enemies.width - 10,this.texture_enemies.height- 5);
         this.hitbox.endFill();
 
@@ -55,4 +57,7 @@ export class Trap extends Container implements IScene, IHitbox{
         this.PhysicsCont.update(dt);
     }
 
+    public soundTrap(){
+        sound.play('trap_sound', {volume:0.2});
+    }
 } 

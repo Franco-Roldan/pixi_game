@@ -5,9 +5,6 @@ import { checkCollition } from "../IU/IHitbox";
 import { Plataformas } from "../objetos/plataforma";
 import { screen_app } from "..";
 import { Door } from "../objetos/door";
-// import { Button } from "../objetos/button";
-// import { Manager } from "../utils/Manager";
-// import { MenuScene } from "./menu";
 import { ResultTable } from "../objetos/result_Table";
 import { Deco_asset, deco_level_one } from "../objetos/deco";
 import { Card } from "../objetos/card";
@@ -15,7 +12,8 @@ import { Board } from "../objetos/board";
 import { Manager } from "../game/Manager";
 import { Trap } from "../objetos/trap";
 import { Lever } from "../objetos/lever";
-
+import { Enemies } from "../objetos/enemies";
+import { Sound, sound } from "@pixi/sound";
 
 export class World_game extends Container implements IScene{
 
@@ -30,11 +28,15 @@ export class World_game extends Container implements IScene{
     private board: Board;
     private door: Door;
     private lever: Lever = new Lever()
-
-
+    private enemy: Enemies;
+    private music:Sound;
     constructor(){
         super();
         
+        this.music = sound.find('sound_bg');
+
+        this.music.play({loop: true, singleInstance: true});
+        this.music.volume = 0.1;
         const background:Sprite = Sprite.from('bg_1');
         background.scale.set(2.3);
         this.addChild(background)
@@ -193,21 +195,38 @@ export class World_game extends Container implements IScene{
         for(let i=0;i<3; i++){
             let x = 0;
             let y = 0;
-            i==0 ?  (x = 20 , y = 600): i==1 ?  (x = 570 , y = 600): i==2 ?(x = 800 , y = 200): null;  
+            i==0 ?  (x = 20 , y = 600): i==1 ?  (x = 570 , y = 600): i==2 ?(x = 900 , y = 300): null;  
             const card = new Card(['card0.png','card1.png','card2.png','card3.png','card4.png','card5.png','card6.png','card7.png',],x,y);
             this.Cards.push(card);
             World.addChild(card);
         }
 
-        World.addChild(this.player);
+        this.enemy = new Enemies(
 
+            [
+                'enemy/walk/0.png',
+                'enemy/walk/1.png',
+                'enemy/walk/2.png',
+                'enemy/walk/3.png',
+                'enemy/walk/4.png',
+                'enemy/walk/5.png',
+            ],[50,0], 185
+        )
+        this.enemy.position.set(825, 210)
+        this.enemy.scale.set(1.7);
+        World.addChild(this.enemy);
+
+        World.addChild(this.player);
         this.addChild(World);
-       
+
     }
+
     update(deltaTime: number, deltaFrame: number): void {
 
         this.player.update(deltaTime, deltaFrame);
         this.board.update(deltaTime, deltaFrame);
+        this.enemy.update(deltaTime, deltaFrame);
+
 
         for (const plat of this.platform) {
 
@@ -241,6 +260,7 @@ export class World_game extends Container implements IScene{
         if(checkCollition(this.player, this.Trap) != null &&  this.result_flag == false){
            
             if(this.Trap.red_flag){
+                this.Trap.soundTrap();
                 this.player.death();
                 this.result_flag = true;
                         
@@ -253,6 +273,21 @@ export class World_game extends Container implements IScene{
             }  
         }
 
+        if(checkCollition(this.player,  this.enemy) != null && this.result_flag == false){
+
+            this.player.death();
+            this.result_flag = true;
+                        
+            setTimeout(() => {
+                            
+                Manager.hearts--;
+                this.board.removeLife();
+                this.GameOver(Manager.hearts);
+            },1000);
+        }else{
+            this.enemy.walk();
+        }
+  
 
         if(checkCollition(this.player, this.door) != null && this.result_flag == false){
             
@@ -300,6 +335,7 @@ export class World_game extends Container implements IScene{
             Board.card = 0;
             const gameOver = new ResultTable(false);
             this.addChild(gameOver);
+           
         }
 
     }
