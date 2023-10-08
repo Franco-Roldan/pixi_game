@@ -4,10 +4,13 @@ import { IScene } from "../IU/IScene";
 import { Button } from "../objetos/button";
 import { Manager } from "../game/Manager";
 import { World_game } from "./World";
+import { sound } from "@pixi/sound";
 
 export class MenuScene extends Container implements IScene{
     constructor(){
         super();
+
+        sound.stop('sound_bg');
 
         const background: Sprite = Sprite.from('fondo');
         background.scale.set(0.7);

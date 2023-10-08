@@ -20,7 +20,7 @@ export class World_game extends Container implements IScene{
 
     public player: PlayerAnimated = new PlayerAnimated();
     private result_flag: boolean = false;
-
+    private enemy_flag: boolean = true; 
     private platform:Plataformas[];
     private modey_card: Card[];
     private Cards: Card[];
@@ -202,15 +202,9 @@ export class World_game extends Container implements IScene{
         }
 
         this.enemy = new Enemies(
-
-            [
-                'enemy/walk/0.png',
-                'enemy/walk/1.png',
-                'enemy/walk/2.png',
-                'enemy/walk/3.png',
-                'enemy/walk/4.png',
-                'enemy/walk/5.png',
-            ],[50,0], 185
+            ['enemy/walk/0.png','enemy/walk/1.png','enemy/walk/2.png','enemy/walk/3.png','enemy/walk/4.png','enemy/walk/5.png',],
+            ['enemy/death/0.png','enemy/death/1.png','enemy/death/2.png','enemy/death/3.png','enemy/death/4.png','enemy/death/5.png',]
+            ,[50,0], 185
         )
         this.enemy.position.set(825, 210)
         this.enemy.scale.set(1.7);
@@ -258,8 +252,9 @@ export class World_game extends Container implements IScene{
         }
         
         if(checkCollition(this.player, this.Trap) != null &&  this.result_flag == false){
-           
+            const overlap:any = checkCollition(this.player, this.Trap);
             if(this.Trap.red_flag){
+                this.player.Separacion(overlap , this.Trap);
                 this.Trap.soundTrap();
                 this.player.death();
                 this.result_flag = true;
@@ -306,9 +301,32 @@ export class World_game extends Container implements IScene{
             this.GameOver(Manager.hearts);
         }
 
+        if(this.enemy_flag){
+
+            const hitbox_bullet = this.player.hitboxBullet();
+            for(const h  of hitbox_bullet) {
+                
+                if(checkCollition(h, this.enemy) != null){
+                    h.destroy();
+                    this.enemy.Damage_received += 1;
+                    if(this.enemy.hurt()){
+                        this.enemy.death();
+                        setTimeout(() => {
+                            
+                            this.enemy.destroy();
+                            this.enemy_flag = false;
+                        }, 1000);
+                    }
+                }
+            }
+        }
+
+        
+
         if(checkCollition(this.player, this.lever) != null){
             this.lever.heldDown();
             this.Trap.offEffect();
+            this.lever.lever_state = true;
         }
 
         if(Board.card == 3 && this.door.flag_door == false){

@@ -47,7 +47,7 @@ export class Manager {
             }
         });
         window.dispatchEvent( new Event('resize'));
-
+        
         Ticker.shared.add(Manager.update);
 
     }

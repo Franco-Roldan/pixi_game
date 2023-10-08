@@ -69,6 +69,9 @@ export const assets: ResolverManifest = {
                 card_sound: './sound/card_sound.mp3',
                 opendoor_sound : './sound/OpenDoor.mp3',
                 click: './sound/click.mp3',
+                shot_sound: './sound/disparo_sound.mp3',
+                hit_sound: './sound/hit.mp3',
+                death_enemy: './sound/death_enemy.mp3',
             }
         }
 

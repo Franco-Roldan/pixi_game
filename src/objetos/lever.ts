@@ -33,10 +33,13 @@ export class Lever extends Container implements IHitbox{
     }
 
     public heldDown(){
-        sound.play('click', {volume: 0.3});
-        this.lever_base.scale.y =2;
-        this.lever_base.position.y = +5;
-        this.lever_top.position.y = +5;
+        if(this.lever_state == false){
+
+            sound.play('click', {volume: 0.3, loop:false});
+            this.lever_base.scale.y =2;
+            this.lever_base.position.y = +5;
+            this.lever_top.position.y = +5;
+        }
     }
 
     public getHitbox(): Rectangle {
