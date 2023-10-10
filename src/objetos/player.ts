@@ -156,11 +156,10 @@ export class PlayerAnimated extends Container implements IScene, IHitbox{
 
             // only if the player is on the ground
             if(this.PhysicsPlayer.acceleration.y == 0){
-                if(!KeyBoard.state.get('Enter')){
-                    this.player.playState('Idle', false);
-                }else{
-                    this.attack();
-                }
+        
+                this.player.playState('Idle', false);
+            
+
             }
             this.PhysicsPlayer.speed.x = 0;
         }
@@ -175,7 +174,10 @@ export class PlayerAnimated extends Container implements IScene, IHitbox{
         for (const i of this.bullet) {
             i.update(deltaTime, deltaFrame);
         }
-        this.movements();
+        if(this.life_flag){
+
+            this.movements();
+        }
  
         if(this.PhysicsPlayer.y  < screen_app.height){
 
@@ -221,14 +223,16 @@ export class PlayerAnimated extends Container implements IScene, IHitbox{
     public death(){
 
         this.life_flag = false;
-        this.PhysicsPlayer.speed.x = 0; 
-        this.PhysicsPlayer.acceleration.x= 0;
+ 
+        this.Speed_X = 0;
+        this.PhysicsPlayer.speed.x = 0;
+        this.PhysicsPlayer.acceleration.x = 0;
         this.player.playState('death');
         sound.play('death_sound', {volume:0.2});
         setTimeout(() => {
             this.player.destroy();
             
-        }, 1000);
+        }, 700);
     }
 
     public attack():void{

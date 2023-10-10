@@ -1,10 +1,15 @@
 import { Application, Ticker } from "pixi.js";
 import { IScene } from '../IU/IScene'
+import { Level1 } from "../Scenes/Level1";
+import { Level2 } from "../Scenes/Level2";
 
 export class Manager {
 
     private static _score: number = 0;
     private static _heartsLife: number = 3;
+    private static _ContentScene =[Level1, Level2];
+
+
     private constructor(){}
 
     private static app : Application;
@@ -83,5 +88,8 @@ export class Manager {
     }
     public static set hearts(value:number){
         Manager._heartsLife = value;
+    }
+    public static get ContentScene(){
+        return Manager._ContentScene;
     }
 }

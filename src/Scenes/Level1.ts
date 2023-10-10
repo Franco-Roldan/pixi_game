@@ -14,8 +14,9 @@ import { Trap } from "../objetos/trap";
 import { Lever } from "../objetos/lever";
 import { Enemies } from "../objetos/enemies";
 import { Sound, sound } from "@pixi/sound";
+import { Level2 } from "./Level2";
 
-export class World_game extends Container implements IScene{
+export class Level1 extends Container implements IScene{
 
 
     public player: PlayerAnimated = new PlayerAnimated();
@@ -129,14 +130,19 @@ export class World_game extends Container implements IScene{
         this.platform.push(plat13); 
         World.addChild(plat13);
 
-        const plat14 = new Plataformas(['1 Tiles/Tile_25.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png']);
+        const plat14 = new Plataformas(['1 Tiles/Tile_25.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png','1 Tiles/Tile_26.png']);
         plat14.position.set(screen_app.width - plat14.width + 3, 520);
         this.platform.push(plat14); 
         World.addChild(plat14);
+        const platSub14 = new Plataformas(['1 Tiles/Tile_25.png','1 Tiles/Tile_27.png']);
+        platSub14.position.set(plat14.x - platSub14.width, 520 + platSub14.height/2 );
+        this.platform.push(platSub14);
+        World.addChild(platSub14);
 
         const plat15 = new Plataformas(['1 Tiles/Tile_12.png','1 Tiles/Tile_12.png','1 Tiles/Tile_12.png','1 Tiles/Tile_12.png','1 Tiles/Tile_12.png'], 1, false);
         plat15.position.set(300, 320);
         World.addChild(plat15);
+
 
         const plat16 = new Plataformas(['1 Tiles/Tile_12.png','1 Tiles/Tile_12.png','1 Tiles/Tile_12.png','1 Tiles/Tile_12.png','1 Tiles/Tile_12.png'], 1, false);
         plat16.position.set(590, 320);
@@ -165,6 +171,11 @@ export class World_game extends Container implements IScene{
         const plat21 = new Plataformas(['1 Tiles/Tile_01.png','1 Tiles/Tile_02.png','1 Tiles/Tile_02.png','1 Tiles/Tile_02.png','1 Tiles/Tile_02.png','1 Tiles/Tile_02.png','1 Tiles/Tile_02.png','1 Tiles/Tile_02.png','1 Tiles/Tile_02.png','1 Tiles/Tile_03.png']);
         plat21.position.set(plat18.x + plat18.width - 3 , plat20.y - plat21.height);
         World.addChild(plat21);
+
+        const plat22 = new Plataformas(['1 Tiles/Tile_25.png','1 Tiles/Tile_27.png']);
+        plat22.position.set(screen_app.width - plat22.width, 500 - plat22.height);
+        this.platform.push(plat22);
+        World.addChild(plat22);
 
         const tube = new Plataformas('3 Objects/1 Tube/4.png',1, true, -90 );
         tube.position.set(812 - tube.width + 3 , screen_app.height - tube.height + 40 );
@@ -251,8 +262,8 @@ export class World_game extends Container implements IScene{
             }
         }
         
-        if(checkCollition(this.player, this.Trap) != null &&  this.result_flag == false){
-            const overlap:any = checkCollition(this.player, this.Trap);
+        const overlap = checkCollition(this.player, this.Trap);
+        if(overlap != null &&  this.result_flag == false){
             if(this.Trap.red_flag){
                 this.player.Separacion(overlap , this.Trap);
                 this.Trap.soundTrap();
@@ -283,7 +294,6 @@ export class World_game extends Container implements IScene{
             this.enemy.walk();
         }
   
-
         if(checkCollition(this.player, this.door) != null && this.result_flag == false){
             
             if(this.door.flag_door){
@@ -321,8 +331,6 @@ export class World_game extends Container implements IScene{
             }
         }
 
-        
-
         if(checkCollition(this.player, this.lever) != null){
             this.lever.heldDown();
             this.Trap.offEffect();
@@ -333,12 +341,10 @@ export class World_game extends Container implements IScene{
             this.door.OpenDoor();
         }
         
-
     }
 
     public WinLevel():void{
-        const win = new ResultTable(true);
-        Manager.score = 0;
+        const win = new ResultTable(true, new Level1(), new Level2());
         Manager.hearts = 3;
         Board.card = 0;
         this.addChild(win);
@@ -346,12 +352,12 @@ export class World_game extends Container implements IScene{
     public GameOver(lifes:number):void{
         
         if(lifes > 0){
-            Manager.changeScene( new World_game());
+            Manager.changeScene( new Level1());
         }else{
             Manager.score = 0;
             Manager.hearts = 3;
             Board.card = 0;
-            const gameOver = new ResultTable(false);
+            const gameOver = new ResultTable(false, new Level1(), new Level2());
             this.addChild(gameOver);
            
         }

@@ -3,13 +3,13 @@ import { screen_app } from "..";
 import { Button } from "./button";
 import { Manager } from "../game/Manager";
 import { MenuScene } from "../Scenes/menu";
-import { World_game } from "../Scenes/World";
+import { IScene } from "../IU/IScene";
 
 export class ResultTable extends Container{
 
     private title_result: string;
 
-    constructor(match_result: boolean){
+    constructor(match_result: boolean,current_scene:IScene, next_scene:IScene){
         super();
 
         const UI_win: Graphics = new Graphics();
@@ -36,18 +36,20 @@ export class ResultTable extends Container{
             const Continue_button = new Button('', 'arrow_right');
             Continue_button.position.set((screen_app.width/2) + 200 ,  screen_app.height/2 + content_text.height);
             UI_win.addChild(Continue_button);
+            Continue_button.on('mouseup', () => {Manager.changeScene(next_scene)});
+
         }else{
             home_button.position.set( screen_app.width/2 + 100 ,  screen_app.height/2 + content_text.height);
             Return_button.position.set((screen_app.width/2) - 100 ,  screen_app.height/2 + content_text.height);
 
         }
 
-
         UI_win.addChild(Return_button);
         UI_win.addChild(home_button);
     
+
         home_button.on('mouseup', () => {Manager.changeScene(new MenuScene())});
-        Return_button.on('mouseup', () => {Manager.changeScene( new World_game())});
+        Return_button.on('mouseup', () => {Manager.changeScene(current_scene)});
 
     }
 }

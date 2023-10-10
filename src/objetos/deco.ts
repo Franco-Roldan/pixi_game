@@ -238,6 +238,126 @@ export const deco_level_one = [
         rotation: 0,
         scale: 2
     },
+    {
+        name: '3 Objects/2 Decoration/16.png',
+        x: 1030,
+        y: 580,
+        rotation: 0,
+        scale: 2
+    },
+    {
+        name: '3 Objects/1 Tube/6.png',
+        x: 960,
+        y: 385,
+        rotation: 90,
+        scale: 6.5
+    },
+    {
+        name: '3 Objects/1 Tube/11.png',
+        x: 930,
+        y: 390,
+        rotation: 90,
+        scale: 3
+    },
+    {
+        name: '3 Objects/1 Tube/9.png',
+        x: 850,
+        y: 540,
+        rotation: 0,
+        scale: 3
+    },
+]
 
-
+export const deco_level_two = [
+    {
+        name: '3 Objects/3 Power lines/3.png',
+        x: 630,
+        y: 105,
+        rotation: 0,
+        scale: 1.5
+    },
+    {
+        name: '3 Objects/2 Decoration/26.png',
+        x: 670,
+        y: 320,
+        rotation: 0,
+        scale: 1.5
+    },    
+    {
+        name: '3 Objects/1 Tube/4.png',
+        x: 765,
+        y: 542,
+        rotation: 0,
+        scale: 1
+    },
+    {
+        name: '3 Objects/2 Decoration/25.png',
+        x: 820,
+        y: 580,
+        rotation: 0,
+        scale: 1
+    },
+    {
+        name: '3 Objects/2 Decoration/27.png',
+        x: 840,
+        y: 625,
+        rotation: 0,
+        scale: 1
+    },
+    {
+        name: '3 Objects/2 Decoration/27.png',
+        x: 840,
+        y: 625,
+        rotation: 0,
+        scale: 1
+    },
+    {
+        name: '1 Tiles/Tile_55.png',
+        x: 0,
+        y: 500,
+        rotation: 0,
+        scale: 20
+    },
+    {
+        name: '3 Objects/2 Decoration/14.png',
+        x: 100,
+        y: 550,
+        rotation: 0,
+        scale: 2
+    },
+    {
+        name: '3 Objects/2 Decoration/18.png',
+        x: 110,
+        y: 625,
+        rotation: 0,
+        scale: 2
+    },    
+    {
+        name: '1 Tiles/Tile_49.png',
+        x: 1135,
+        y: 350,
+        rotation: 0,
+        scale: 6
+    },
+    {
+        name: '3 Objects/1 Tube/3.png',
+        x: 30,
+        y: 520,
+        rotation: 0,
+        scale: 2.2
+    },
+    {
+        name: '3 Objects/1 Tube/10.png',
+        x: 1170,
+        y: 350,
+        rotation: 0,
+        scale: 3.3
+    },    
+    {
+        name: '3 Objects/2 Decoration/1.png',
+        x: 250,
+        y: 560,
+        rotation: 0,
+        scale: 1.5
+    },
 ]

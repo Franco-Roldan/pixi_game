@@ -14,6 +14,11 @@ export const assets: ResolverManifest = {
                 bg_6: './background/bg-6.png',
                 bg_7: './background/bg-7.png',
                 bg_8: './background/bg-8.png',
+                bg_one: './background/bg_1.png',
+                bg_two: './background/bg_2.png',
+                bg_three: './background/bg_3.png',
+                bg_four: './background/bg_4.png',
+                bg_five: './background/bg_5.png',
             }
         },
         {
@@ -51,8 +56,8 @@ export const assets: ResolverManifest = {
         {
             name: 'IU',
             assets: {
-                botton_green_up : './IU/Button_texture_1.png',
-                botton_green_down : './IU/Button_texture_2.png',
+                button_blue_up : './IU/Button_blue_texture_1.png',
+                // botton_green_down : './IU/Button_texture_2.png',
                 arrow_right: './IU/arrowRight.png',
                 home: './IU/home.png',
                 return: './IU/return.png',  
